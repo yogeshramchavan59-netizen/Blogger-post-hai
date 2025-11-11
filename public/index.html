@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blogger Post Uploader</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
+    input, textarea, button { width: 100%; padding: 10px; margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <h2>Blogger Post Uploader</h2>
+  <label>Title</label>
+  <input id="title" placeholder="Enter post title">
+  <label>HTML Content</label>
+  <textarea id="content" rows="10" placeholder="Write HTML..."></textarea>
+  <button id="upload">Upload Post</button>
+  <p id="result"></p>
+
+  <script>
+    document.getElementById('upload').onclick = async () => {
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      const r = await fetch('/create-post', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title, content})
+      });
+      const j = await r.json();
+      document.getElementById('result').innerText = j.link ? '✅ Posted: ' + j.link : '❌ ' + j.error;
+    }
+  </script>
+</body>
+</html>
