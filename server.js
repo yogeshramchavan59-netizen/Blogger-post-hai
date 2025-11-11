@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const CLIENT_ID = "707933033445-t180k6ir38ulp8kc5gmg9q6ej2gvei7t.apps.googleusercontent.com";
 const CLIENT_SECRET = "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";
 const BLOG_ID = "7622125566585454468";
-const REDIRECT_URI = "https://yourappname.onrender.com/auth/google/callback"; // Render URL बाद में बदलना
+const REDIRECT_URI = "https://blogger-post-hai.onrender.com/auth"; // Render URL बाद में बदलना
 
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
